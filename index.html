@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  PROGETTO: Pagina web per il download del report di sostenibilità
+  AZIENDA:  Conte Tasca d'Almerita Società Agricola a R.L.
+            (tenuta fondativa Regaleali, Sclafani Bagni - Palermo, Sicilia)
+  AUTORE:   Vincenzo Vallefuoco - matricola 0312301117
+  UNIVERSITÀ: Pegaso - Informatica per le Aziende Digitali (L-31)
+
+  Questo file (index.html) definisce la STRUTTURA e i CONTENUTI della pagina.
+  Lo stile grafico è separato nel file "style.css".
+
+  NOTA SULLE IMMAGINI: la sezione di apertura, la sezione "La nostra storia",
+  "Le cinque tenute", "Ambiente e clima" e "Le persone" utilizzano fotografie
+  reali, fornite per il progetto dall'autore (alcune di provenienza Pexels a
+  licenza libera, altre tratte dal sito ufficiale di Tasca d'Almerita con
+  autorizzazione esplicita richiesta all'azienda). Il logo in intestazione
+  è il file ufficiale fornito dall'azienda. La palette cromatica e alcuni
+  dettagli compositivi (il nome della tenuta sovrapposto alla fotografia,
+  l'invito a scorrere in apertura) richiamano l'eleganza sobria osservata
+  sul sito ufficiale, senza replicarne il layout, la tipografia o i
+  contenuti: fondo scuro quasi nero, un solo accento cromatico (oro caldo),
+  ampio uso di spazio bianco.
+  ============================================================================
+-->
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tasca d'Almerita - Il percorso di sostenibilità della tenuta Regaleali e delle cinque tenute siciliane, e accesso al Report di Sostenibilità.">
+
+    <title>Tasca d'Almerita | Sostenibilità</title>
+
+    <!-- Icona della scheda del browser (favicon): un monogramma originale
+         ("T" in oro su fondo grigio scuro), coerente con la palette del
+         sito. Il logo ufficiale, fornito in versione bianca, non è
+         utilizzabile direttamente come favicon: risulterebbe invisibile su
+         uno sfondo di scheda chiaro, e il wordmark completo, molto largo e
+         sottile, diventerebbe illeggibile alle dimensioni ridotte (16-32
+         pixel) a cui un'icona di scheda viene normalmente mostrata. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts: "EB Garamond" per titoli e testo corrente; "Inter"
+         reintrodotto per il solo testo dei pulsanti, in maiuscolo, secondo
+         un registro tipografico diverso e più marcatamente "da interfaccia"
+         rispetto al resto della pagina -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ====================================================================
+         HEADER: intestazione minimale, con il nome dell'azienda in maiuscolo
+         spaziato (wordmark tipografico, in assenza del logo ufficiale) e un
+         menu di navigazione essenziale.
+    ==================================================================== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#top" class="logo">
+                <img src="img/logo.png" alt="Tasca d'Almerita" class="logo-img">
+            </a>
+
+            <nav class="main-nav" aria-label="Menu principale">
+                <ul>
+                    <li><a href="#chi-siamo">La nostra storia</a></li>
+                    <li><a href="#tenute">Le cinque tenute</a></li>
+                    <li><a href="#ingredienti">I dieci ingredienti</a></li>
+                    <li><a href="#clima">Ambiente e clima</a></li>
+                    <li><a href="#persone">Le persone</a></li>
+                    <li><a href="#numeri">I numeri</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ====================================================================
+         HERO: fotografia reale (mani che raccolgono uva, bianco e nero),
+         fornita per il progetto, con testo sovrapposto essenziale.
+         Sostituisce la precedente illustrazione SVG.
+    ==================================================================== -->
+    <section id="top" class="hero" style="background-image: url('img/grapes_hand_bw.jpg');">
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <span class="eyebrow eyebrow-light">Dal 1830, Regaleali, Sicilia</span>
+            <h1>Coltiviamo sostenibilità.</h1>
+            <p class="hero-subtitle">
+                Il percorso di Tasca d'Almerita, giunto al quindicesimo report consecutivo:
+                un impegno di lungo periodo per la terra, l'acqua, l'aria e le comunità
+                delle cinque tenute siciliane della famiglia.
+            </p>
+            <a href="#download" class="btn btn-primary">Consulta il Report di Sostenibilità 2025</a>
+        </div>
+
+        <span class="scroll-cue">Scorri</span>
+    </section>
+
+    <main>
+
+        <!-- ================= CHI SIAMO / LA TENUTA ================= -->
+        <section id="chi-siamo" class="section">
+            <div class="container">
+                <span class="eyebrow">Dal 1830</span>
+                <h2>Otto generazioni, cinque tenute, un'unica terra</h2>
+                <div class="two-columns">
+                    <div>
+                        <p>
+                            Conte Tasca d'Almerita Società Agricola a R.L. nasce nel 1830, quando i
+                            fratelli Lucio e Carmelo Mastrogiovanni Tasca acquistarono l'ex feudo
+                            di Regaleali, circa 1.200 ettari tra le campagne di Sclafani Bagni e
+                            Vallelunga Pratameno, nel cuore della Sicilia. Da allora la guida
+                            dell'azienda è rimasta nella stessa famiglia per otto generazioni, fino
+                            ad Alberto Tasca d'Almerita, oggi anche presidente della Fondazione
+                            SOStain Sicilia.
+                        </p>
+                        <p>
+                            Nel tempo a Regaleali, la tenuta fondativa, si sono affiancate altre
+                            quattro proprietà, ciascuna dedicata a un territorio e a vitigni
+                            specifici: Tascante sull'Etna, Capofaro sull'isola di Salina, Whitaker
+                            sull'isola di Mozia e Sallier de La Tour nella DOC Monreale. Cinque
+                            tenute, un solo principio: una viticoltura che restituisca alla terra
+                            più di quanto le venga chiesto.
+                        </p>
+                    </div>
+                    <div class="stat-cards" role="group" aria-label="Riconoscimenti principali">
+                        <div class="stat-card">
+                            <strong>231</strong>
+                            <span>Dipendenti, tra tempo indeterminato e lavoratori stagionali</span>
+                        </div>
+                        <div class="stat-card">
+                            <strong>36</strong>
+                            <span>Vini prodotti, da 31 varietà di vite coltivate (13 autoctone)</span>
+                        </div>
+                        <div class="stat-card">
+                            <strong>15°</strong>
+                            <span>Report di sostenibilità consecutivo, edizione 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Percorso storico compatto: le tappe principali del cammino di
+                     sostenibilità dell'azienda, dalla prima certificazione al più
+                     recente riconoscimento istituzionale -->
+                <div class="timeline-compact">
+                    <div class="timeline-item">
+                        <span class="timeline-year">2017</span>
+                        <p>Prima azienda vitivinicola italiana certificata VIVA/SOStain a livello di intera organizzazione.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2019</span>
+                        <p>Wine Enthusiast premia Tasca d'Almerita come "European Winery of the Year".</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2021</span>
+                        <p>Robert Parker Green Emblem, per gli sforzi nella tutela ambientale e della biodiversità.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2023</span>
+                        <p>L'azienda diventa Società Benefit ed è certificata B Corp.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2025</span>
+                        <p>Iscrizione al Registro Speciale dei Marchi Storici di Interesse Nazionale.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LE CINQUE TENUTE ================= -->
+        <section id="tenute" class="section section-alt">
+            <div class="container">
+                <span class="eyebrow">Un'unica famiglia, cinque terre</span>
+                <h2>Le tenute, tenuta per tenuta</h2>
+                <p class="section-intro">
+                    Ogni tenuta ha un proprio terroir, un proprio microclima e una propria storia,
+                    ma condivide con le altre lo stesso impianto di sostenibilità del protocollo
+                    SOStain. Scorri il carosello con il dito, con il trackpad o trascinando con
+                    il mouse.
+                </p>
+
+                <!-- Carosello editoriale delle cinque tenute: stessa meccanica di scorrimento
+                     del carosello dei dieci ingredienti (vedi sezione #ingredienti), condivisa
+                     tramite le classi .carousel / .carousel-track e un unico script in fondo
+                     alla pagina. Il nome di ciascuna tenuta è sovrapposto alla fotografia, in
+                     un riquadro di larghezza fissa uguale per tutte e cinque: risolve così sia
+                     la richiesta di un carosello interattivo, sia lo sbilanciamento della
+                     precedente griglia a 5 elementi. -->
+                <div class="carousel" id="tenuteCarousel">
+                    <button type="button" class="carousel-arrow carousel-prev" aria-label="Tenuta precedente">&#8249;</button>
+                    <div class="carousel-track estate-track" tabindex="0" aria-label="Elenco scorrevole delle cinque tenute">
+                        <article class="estate-card">
+                            <div class="estate-photo-wrap">
+                                <img src="img/tenuta_regaleali.jpg" alt="Vigneti collinari della tenuta Regaleali" class="estate-photo pos-regaleali">
+                                <div class="estate-photo-overlay">
+                                    <span class="estate-tag">Tenuta</span>
+                                    <h3>Regaleali</h3>
+                                </div>
+                            </div>
+                            <div class="estate-card-body">
+                                <p class="estate-meta">Sclafani Bagni e Vallelunga Pratameno · 400–900 m s.l.m.</p>
+                                <p>La tenuta fondativa e il cuore geografico della Sicilia: 557 ettari, di
+                                   cui 397 a vigneto, con 25 varietà in produzione e 57 ettari lasciati a
+                                   riserva naturale.</p>
+                            </div>
+                        </article>
+                        <article class="estate-card">
+                            <div class="estate-photo-wrap">
+                                <img src="img/tenuta_tascante.jpg" alt="Vigneto della tenuta Tascante con l'Etna sullo sfondo" class="estate-photo pos-tascante">
+                                <div class="estate-photo-overlay">
+                                    <span class="estate-tag">Tenuta</span>
+                                    <h3>Tascante</h3>
+                                </div>
+                            </div>
+                            <div class="estate-card-body">
+                                <p class="estate-meta">Versante nord dell'Etna · 730–780 m s.l.m.</p>
+                                <p>"Un vigneto sul vulcano": 35,79 ettari tra Nerello Mascalese, Carricante
+                                   e Nerello Cappuccio, con quasi 200 muretti a secco e un castagneto di
+                                   7 ettari.</p>
+                            </div>
+                        </article>
+                        <article class="estate-card">
+                            <div class="estate-photo-wrap">
+                                <img src="img/tenuta_capofaro.jpg" alt="Vigneto della tenuta Capofaro con il faro di Salina sullo sfondo" class="estate-photo pos-capofaro">
+                                <div class="estate-photo-overlay">
+                                    <span class="estate-tag">Tenuta</span>
+                                    <h3>Capofaro</h3>
+                                </div>
+                            </div>
+                            <div class="estate-card-body">
+                                <p class="estate-meta">Isola di Salina, arcipelago delle Eolie · 40–300 m s.l.m.</p>
+                                <p>12,13 ettari sull'isola verde delle Eolie, patrimonio UNESCO: qui nasce
+                                   la Malvasia, da vigneti storici tra cui l'"Anfiteatro", coltivati da
+                                   decenni.</p>
+                            </div>
+                        </article>
+                        <article class="estate-card">
+                            <div class="estate-photo-wrap">
+                                <img src="img/tenuta_whitaker.jpg" alt="Isola archeologica di Mozia con i vigneti della tenuta Whitaker" class="estate-photo pos-whitaker">
+                                <div class="estate-photo-overlay">
+                                    <span class="estate-tag">Tenuta</span>
+                                    <h3>Whitaker (Mozia)</h3>
+                                </div>
+                            </div>
+                            <div class="estate-card-body">
+                                <p class="estate-meta">Isola di Mozia, Stagnone di Marsala · 7 m s.l.m.</p>
+                                <p>40 ettari su un isolotto fenicio di 2.700 anni, dove nacque forse il
+                                   primo nucleo del Grillo: qui i destini delle famiglie Whitaker e Tasca
+                                   si sono intrecciati.</p>
+                            </div>
+                        </article>
+                        <article class="estate-card">
+                            <div class="estate-photo-wrap">
+                                <img src="img/tenuta_sallier.jpg" alt="Filari della tenuta Sallier de La Tour al tramonto" class="estate-photo pos-sallier">
+                                <div class="estate-photo-overlay">
+                                    <span class="estate-tag">Tenuta</span>
+                                    <h3>Sallier de La Tour</h3>
+                                </div>
+                            </div>
+                            <div class="estate-card-body">
+                                <p class="estate-meta">Alto Belice, DOC Monreale · 270–370 m s.l.m.</p>
+                                <p>78,4 ettari nella tenuta della famiglia Sallier de La Tour dalla metà
+                                   dell'Ottocento, con tre laghi collinari e sorgenti naturali che
+                                   sostengono il vitigno Syrah.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <button type="button" class="carousel-arrow carousel-next" aria-label="Tenuta successiva">&#8250;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= I DIECI INGREDIENTI ================= -->
+        <section id="ingredienti" class="section section-alt">
+            <div class="container">
+                <span class="eyebrow">Il protocollo SOStain</span>
+                <h2>I dieci ingredienti della sostenibilità</h2>
+                <p class="section-intro">
+                    Dal 2010 Tasca d'Almerita aderisce a SOStain, il protocollo di sostenibilità
+                    per la viticoltura siciliana verificato da un ente terzo indipendente. Dieci
+                    requisiti minimi, misurabili e comparabili, guidano ogni tenuta della famiglia.
+                    Scorri il carosello con il dito, con il trackpad o trascinando con il mouse.
+                </p>
+
+                <!-- Carosello orizzontale: il contenitore .ingredient-track usa lo
+                     scorrimento nativo del browser (overflow-x + scroll-snap), che da
+                     solo copre già lo scorrimento a dito su touch screen e con il
+                     trackpad, senza bisogno di alcun codice. Le frecce e il trascinamento
+                     con il mouse (utile su desktop, dove il solo mouse non permette di
+                     scorrere in orizzontale) sono invece gestiti dal piccolo script alla
+                     fine della pagina: l'unica eccezione alla scelta di non usare
+                     JavaScript nel resto del sito, motivata nel rapporto. -->
+                <div class="carousel" id="ingredientCarousel">
+                    <button type="button" class="carousel-arrow carousel-prev" aria-label="Ingrediente precedente">&#8249;</button>
+                    <div class="carousel-track ingredient-track" tabindex="0" aria-label="Elenco scorrevole dei dieci ingredienti della sostenibilità">
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">01</span>
+                            <h3>Gestione sostenibile del vigneto</h3>
+                            <p>Certificazione SQNPI (Sistema di Qualità Nazionale Produzione Integrata), a garanzia di un uso controllato dei prodotti fitosanitari.</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">02</span>
+                            <h3>Divieto di diserbo chimico</h3>
+                            <p>Nessuna delle cinque tenute pratica il diserbo chimico: si ricorre esclusivamente a mezzi meccanici (zappa, aratri, erpici sottofila).</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">03</span>
+                            <h3>Protezione della biodiversità</h3>
+                            <p>Il 71% della superficie delle tenute è a vigneto; il resto è dedicato a pascoli, oliveti, boschi, laghi e torrenti, con arnie per la tutela degli impollinatori.</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">04</span>
+                            <h3>Materiali ecocompatibili</h3>
+                            <p>Pali in legno e ferro riciclabile, legacci per la potatura in materiale degradabile dove possibile.</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">05</span>
+                            <h3>Materie prime locali</h3>
+                            <p>Il 100% delle uve e il 75% dei servizi impiegati provengono dal territorio siciliano, da fornitori situati nei dintorni delle tenute.</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">06</span>
+                            <h3>Il programma VIVA</h3>
+                            <p>Dal 2016, quattro indicatori calcolati a livello di intera organizzazione: Aria (Carbon Footprint), Acqua (Water Footprint), Vigneto e Territorio.</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">07</span>
+                            <h3>Solo l'energia che serve</h3>
+                            <p>Il disciplinare SOStain fissa un limite di 0,70 kWh per litro di vino vinificato: la media delle tenute Tasca è di 0,53 kWh/litro.</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">08</span>
+                            <h3>Bottiglie leggere anche per l'aria</h3>
+                            <p>Peso medio delle bottiglie da 0,75 litri: 518 grammi, contro un limite disciplinare di 550 g. Vetro riciclato al 70-80%.</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">09</span>
+                            <h3>Il report di sostenibilità</h3>
+                            <p>Pubblicato ogni anno senza interruzioni dal 2011: la trasparenza e la comparabilità dei dati nel tempo sono parte del metodo, non un adempimento.</p>
+                        </article>
+                        <article class="ingredient-card">
+                            <span class="ingredient-num">10</span>
+                            <h3>Assenza di residui nei vini</h3>
+                            <p>Analisi obbligatorie ogni anno su tutti i vini: nessun residuo è mai stato riscontrato nel corso degli anni.</p>
+                        </article>
+                    </div>
+                    <button type="button" class="carousel-arrow carousel-next" aria-label="Ingrediente successivo">&#8250;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= AMBIENTE E CLIMA ================= -->
+        <section id="clima" class="section">
+            <div class="container">
+                <span class="eyebrow">Ambiente e clima</span>
+                <h2>Un modello che guarda oltre l'impatto zero</h2>
+                <div class="two-columns">
+                    <div>
+                        <p>
+                            Alberto Tasca descrive nella lettera che apre il report un orizzonte
+                            che va oltre la semplice sostenibilità: un modello "Nature Positive",
+                            capace di restituire al territorio più valore di quanto l'attività
+                            dell'azienda ne consumi. È il motivo per cui Tasca d'Almerita è stata
+                            tra i soci fondatori di SOStain nel 2010 e, nel 2017, la prima cantina
+                            italiana a ottenere la certificazione VIVA/SOStain a livello di intera
+                            organizzazione.
+                        </p>
+                        <p>
+                            Nel marzo 2023 Tasca d'Almerita è diventata anche B Corp certificata,
+                            entrando a far parte di un network internazionale di aziende che
+                            rispettano alti standard di performance sociale e ambientale. Con una
+                            modifica statutaria, l'azienda è inoltre diventata Società Benefit,
+                            impegnandosi giuridicamente ad affiancare agli obiettivi di profitto
+                            anche finalità di beneficio comune. Oggi la Fondazione SOStain Sicilia,
+                            presieduta da Alberto Tasca dal 2020, riunisce 39 cantine siciliane
+                            impegnate nello stesso percorso.
+                        </p>
+                        <p>
+                            Sul fronte energetico, dal 2011 al 2024 gli impianti fotovoltaici delle
+                            tenute hanno generato complessivamente quasi 7 milioni di kWh di energia
+                            rinnovabile, evitando l'emissione di oltre 1.300 tonnellate di CO₂: una
+                            leva strutturale, non occasionale, della strategia di riduzione delle
+                            emissioni dell'azienda.
+                        </p>
+                    </div>
+                    <div class="stat-cards" role="group" aria-label="Dati ambientali">
+                        <div class="stat-card">
+                            <strong>0,53 kWh/l</strong>
+                            <span>Consumo energetico medio di cantina, sotto il limite SOStain di 0,70 kWh/l</span>
+                        </div>
+                        <div class="stat-card">
+                            <strong>518 g</strong>
+                            <span>Peso medio delle bottiglie da 0,75 litri, sotto il limite di 550 g</span>
+                        </div>
+                        <div class="stat-card">
+                            <strong>71%</strong>
+                            <span>Della superficie delle tenute è a vigneto; il resto è riserva di biodiversità</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini grafico a barre, solo HTML/CSS: il consumo idrico equivalente
+                     misurato dall'indicatore VIVA "Acqua" (Water Footprint, ISO 14046),
+                     calcolato da Tasca d'Almerita ogni due anni. Le tre barre sono in scala
+                     tra loro (nessuno script: le altezze sono valori fissi nell'attributo
+                     style, calcolati sul massimo della serie), e raccontano un dato che il
+                     Report di Sostenibilità 2025 presenta con la stessa onestà: l'uso
+                     dell'acqua cresce con la siccità, non con una gestione peggiore. -->
+                <div class="water-chart">
+                    <h3>L'acqua, una risorsa da misurare</h3>
+                    <p class="water-chart-intro">
+                        Dal 2016 Tasca d'Almerita calcola l'indicatore Acqua del programma VIVA,
+                        allineato allo standard ISO 14046 (Water Footprint). L'andamento del
+                        consumo idrico equivalente, tra il 2020 e il 2024, riflette soprattutto
+                        la crescente variabilità climatica e il maggior ricorso all'irrigazione
+                        nelle annate più siccitose.
+                    </p>
+                    <div class="water-bars" role="img" aria-label="Consumo idrico equivalente: circa 274.000 metri cubi nel 2020, 1,69 milioni nel 2022, 2,91 milioni nel 2024">
+                        <div class="water-bar">
+                            <span class="water-bar-value">0,27 Mm³</span>
+                            <div class="water-bar-fill" style="height: 12%;"></div>
+                            <span class="water-bar-year">2020</span>
+                        </div>
+                        <div class="water-bar">
+                            <span class="water-bar-value">1,69 Mm³</span>
+                            <div class="water-bar-fill" style="height: 58%;"></div>
+                            <span class="water-bar-year">2022</span>
+                        </div>
+                        <div class="water-bar">
+                            <span class="water-bar-value">2,91 Mm³</span>
+                            <div class="water-bar-fill" style="height: 100%;"></div>
+                            <span class="water-bar-year">2024</span>
+                        </div>
+                    </div>
+                    <p class="water-note">
+                        Mm³ = milioni di metri cubi. Nel 2020, anno meno siccitoso, l'impronta
+                        idrica era legata soprattutto alla cantina; nelle annate più aride del
+                        2022 e del 2024 a pesare è invece l'irrigazione del vigneto, necessaria
+                        a garantire la continuità produttiva.
+                    </p>
+                </div>
+
+                <!-- Citazione di Alberto Tasca tratta dalla lettera di apertura del
+                     Report di Sostenibilità 2025 ("Presentazione"): il passaggio sul
+                     superamento del concetto di impatto zero, che dà il titolo a
+                     questa stessa sezione della pagina -->
+                <blockquote class="pull-quote">
+                    <p>"Oggi, dopo 15 anni di studio e sperimentazione, sentiamo che il
+                       concetto di sostenibilità, inteso come semplice riduzione degli
+                       impatti, non è più sufficiente. La sfida è più ambiziosa:
+                       rigenerare."</p>
+                    <cite>Alberto Tasca, Report di Sostenibilità 2025</cite>
+                </blockquote>
+
+                <!-- Due fotografie ufficiali relative alla certificazione B Corp: la
+                     vendemmia a Regaleali (dall'articolo "Tasca d'Almerita è diventata
+                     una B Corp certificata") e la vista aerea del vigneto con i marchi
+                     reali delle tre certificazioni citate nel testo -->
+                <div class="photo-pair">
+                    <figure>
+                        <img src="img/bcorp_article.jpg" alt="Vendemmia a Regaleali con il marchio di certificazione B Corp">
+                        <figcaption>Vendemmia a Regaleali, all'indomani della certificazione B Corp.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/bcorp_aerial_logos.jpg" alt="Vigneto visto dall'alto con i loghi delle certificazioni B Corp, SOStain e Robert Parker Green Emblem" style="object-position: center 82%;">
+                        <figcaption>Le certificazioni di Tasca d'Almerita: B Corp, SOStain, Robert Parker Green Emblem 2021.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LE PERSONE E IL TERRITORIO ================= -->
+        <section id="persone" class="section section-alt">
+            <div class="container">
+                <span class="eyebrow">Le persone</span>
+                <h2>La qualità del lavoro è parte della qualità del vino</h2>
+                <div class="two-columns">
+                    <div>
+                        <p>
+                            La stagionalità del lavoro in vigna rende necessario un ricorso
+                            significativo a personale stagionale, la cui continuità l'azienda
+                            misura e valorizza: il 97% dei lavoratori stagionali e temporanei
+                            degli ultimi 12 mesi aveva già lavorato per Tasca d'Almerita nella
+                            stagione di raccolta precedente, una forma concreta di stabilità in
+                            un settore per natura discontinuo. Oltre alla formazione tecnica
+                            obbligatoria in materia di sicurezza, l'azienda incoraggia la
+                            partecipazione a seminari, fiere e visite tecniche, e garantisce a
+                            tutti i dipendenti un'assicurazione sanitaria integrativa.
+                        </p>
+                        <p>
+                            Il legame con il territorio si estende oltre il vigneto. A
+                            Valledolmo, nel cuore della Tenuta Regaleali, il progetto "Presepi di
+                            Comunità" ha coinvolto i bambini della scuola del paese in un
+                            laboratorio di riuso creativo, trasformando i cartoni delle
+                            confezioni di vino in scenografie natalizie, con dipendenti
+                            dell'azienda impegnati, durante l'orario di lavoro, ad affiancare gli
+                            studenti. Allo stesso spirito di prossimità appartengono il sostegno
+                            alla regata Palermo–Montecarlo e alla storica Coppa degli Assi di
+                            Palermo, per cui l'azienda ha istituito due trofei dedicati alla
+                            memoria dei conti Giuseppe e Lucio Tasca d'Almerita.
+                        </p>
+                    </div>
+                    <div class="stat-cards" role="group" aria-label="Dati sociali">
+                        <div class="stat-card">
+                            <strong>453</strong>
+                            <span>Ore di formazione erogate ai dipendenti nel 2025</span>
+                        </div>
+                        <div class="stat-card">
+                            <strong>97%</strong>
+                            <span>Dei lavoratori stagionali degli ultimi 12 mesi già occupati da Tasca nella stagione precedente</span>
+                        </div>
+                        <div class="stat-card">
+                            <strong>1,30</strong>
+                            <span>Infortuni ogni 100 lavoratori nel 2025, in calo dal 2,23 del 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fotografia reale della vendemmia manuale nel vigneto di San Lucio,
+                     Tenuta Regaleali, fornita per il progetto -->
+                <figure class="photo-wide">
+                    <img src="img/vendemmia_persone.jpg" alt="Vendemmia a mano nel vigneto di San Lucio, alla tenuta Regaleali" style="object-position: center 55%;">
+                    <figcaption>Vendemmia a mano nel vigneto di San Lucio, Tenuta Regaleali.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ================= NUMERI CHIAVE ================= -->
+        <section id="numeri" class="section section-alt">
+            <div class="container">
+                <span class="eyebrow">In sintesi</span>
+                <h2>Il percorso di sostenibilità in cifre</h2>
+                <div class="numbers-grid">
+                    <div class="number-block">
+                        <span class="number">1830</span>
+                        <p>Anno di fondazione, a Regaleali</p>
+                    </div>
+                    <div class="number-block">
+                        <span class="number">8</span>
+                        <p>Generazioni della famiglia Tasca in agricoltura e nel vino</p>
+                    </div>
+                    <div class="number-block">
+                        <span class="number">2010</span>
+                        <p>Anno di adesione al protocollo SOStain</p>
+                    </div>
+                    <div class="number-block">
+                        <span class="number">481.959</span>
+                        <p>kWh di energia fotovoltaica prodotta nel 2025</p>
+                    </div>
+                    <div class="number-block">
+                        <span class="number">95,9 t</span>
+                        <p>CO₂ equivalenti risparmiate nel 2025 grazie al fotovoltaico</p>
+                    </div>
+                    <div class="number-block">
+                        <span class="number">15°</span>
+                        <p>Report di sostenibilità pubblicato, edizione 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DOWNLOAD ================= -->
+        <section id="download" class="section download-section">
+            <div class="container download-inner">
+                <h2>Il Report di Sostenibilità 2025</h2>
+                <p>
+                    Il documento integrale, con gli indicatori del programma VIVA e i dieci
+                    requisiti del protocollo SOStain applicati a ciascuna delle cinque tenute.
+                </p>
+                <!--
+                    A differenza di un caso precedentemente valutato per questo stesso progetto,
+                    in cui il report era pubblicato solo come pagina interattiva non scaricabile,
+                    Tasca d'Almerita pubblica il report come file PDF con collegamento diretto:
+                    il link sottostante punta quindi realmente al documento, non a una pagina di
+                    presentazione.
+                -->
+                <a class="btn btn-download"
+                   href="https://cms.tascadalmerita.it/wp-content/uploads/2026/04/REPORT_SOSTAIN_TASCA_2025.pdf"
+                   download
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    ⬇ Scarica il PDF (Report Sostenibilità 2025)
+                </a>
+                <p class="file-meta">Conte Tasca d'Almerita Società Agricola a R.L. – Palermo</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Pagina realizzata a scopo didattico – Project Work Università Telematica Pegaso.</p>
+            <p>I contenuti sono tratti dal Report di Sostenibilità 2025 di Tasca d'Almerita (www.tascadalmerita.it).</p>
+        </div>
+    </footer>
+
+    <!--
+        Unico script della pagina, scritto in JavaScript nativo (nessuna libreria
+        esterna): si applica a entrambi i caroselli della pagina (le cinque
+        tenute e i dieci ingredienti), individuati tramite la classe .carousel
+        condivisa, invece di ripetere lo stesso codice due volte. Gestisce due
+        interazioni che lo scorrimento nativo del browser non copre da solo:
+        1) il trascinamento orizzontale con il mouse (un mouse, a differenza del
+           dito o del trackpad, non può scorrere in orizzontale senza un aiuto);
+        2) le due frecce di navigazione, per chi preferisce non trascinare.
+        Lo scorrimento a dito su touch screen e con due dita sul trackpad
+        funziona invece già nativamente grazie a "overflow-x" e "scroll-snap"
+        definiti in style.css, senza bisogno di alcuno script.
+    -->
+    <script>
+        (function () {
+            var carousels = document.querySelectorAll('.carousel');
+
+            carousels.forEach(function (carousel) {
+                var track = carousel.querySelector('.carousel-track');
+                var prevBtn = carousel.querySelector('.carousel-prev');
+                var nextBtn = carousel.querySelector('.carousel-next');
+                if (!track) return;
+
+                // Trascinamento con il mouse (click, tieni premuto, trascina)
+                var isDown = false;
+                var startX = 0;
+                var startScroll = 0;
+
+                track.addEventListener('mousedown', function (e) {
+                    isDown = true;
+                    track.classList.add('is-dragging');
+                    startX = e.pageX;
+                    startScroll = track.scrollLeft;
+                });
+                window.addEventListener('mouseup', function () {
+                    isDown = false;
+                    track.classList.remove('is-dragging');
+                });
+                window.addEventListener('mousemove', function (e) {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    track.scrollLeft = startScroll - (e.pageX - startX);
+                });
+
+                // Frecce: scorrono di una card alla volta (la larghezza si
+                // adatta da sola: legge la prima card figlia del carosello
+                // corrente, che sia .ingredient-card o .estate-card)
+                function cardStep() {
+                    var card = track.firstElementChild;
+                    return card ? card.getBoundingClientRect().width + 20 : 300;
+                }
+                if (prevBtn) prevBtn.addEventListener('click', function () {
+                    track.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+                });
+                if (nextBtn) nextBtn.addEventListener('click', function () {
+                    track.scrollBy({ left: cardStep(), behavior: 'smooth' });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
