@@ -1,0 +1,848 @@
+/* ============================================================================
+   STYLE.CSS - Tasca d'Almerita, pagina sostenibilità
+   ============================================================================
+   Uno stile deliberatamente più sobrio e raffinato rispetto ai progetti
+   precedenti, ispirato all'estetica del sito ufficiale: fondo quasi nero,
+   un solo accento cromatico (oro caldo), ampio uso dello spazio bianco,
+   tipografia editoriale con numerazione delle sezioni.
+
+   PALETTE:
+     --ink        #242424   grigio scuro neutro (fondo scuro, campionato
+                             direttamente dalla fotografia in bianco e nero
+                             usata nell'hero)
+     --ink-light  #3D3D3D   grigio scuro più chiaro (sfumature, bordi su fondo scuro)
+     --gold       #B8924A   oro caldo (unico accento cromatico)
+     --gold-light #D4B472   oro chiaro (dettagli su fondo scuro)
+     --cream      #F7F2E9   avorio caldo (sfondo principale)
+     --stone      #EDE6D6   sfondo alternato, leggermente più scuro
+
+   TIPOGRAFIA:
+     - "EB Garamond" (serif storico, sobrio) per i titoli.
+     - "EB Garamond" per l'intera pagina: titoli, testo corrente ed
+       etichette maiuscole spaziate, in un'unica famiglia tipografica.
+   ============================================================================ */
+
+:root {
+    --ink: #242424;
+    --ink-light: #3D3D3D;
+    --gold: #B8924A;
+    --gold-dark: #96762F;
+    --gold-light: #D4B472;
+    --cream: #F7F2E9;
+    --stone: #EDE6D6;
+    --text: #2B2620;
+
+    --font-display: "EB Garamond", Georgia, serif;
+    --font-body: "EB Garamond", Georgia, serif;
+    --font-btn: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --max-width: 1080px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--cream);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    line-height: 1.2;
+    margin: 0 0 20px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 18px; }
+a { color: inherit; }
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* ---- HEADER ---------------------------------------------------------------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--ink);
+    border-bottom: 1px solid rgba(212, 180, 114, 0.18);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* "gap" garantisce una distanza minima dal logo anche quando il menu,
+       con tutte le sue voci, occupa quasi tutta la larghezza disponibile
+       (altrimenti "space-between" da solo può schiacciarlo contro il logo). */
+    gap: 40px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.logo {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    color: var(--cream);
+    text-transform: uppercase;
+}
+
+/* Logo come immagine (file bianco fornito dall'azienda): altezza fissa,
+   larghezza automatica per non deformare le proporzioni */
+.logo-img {
+    display: block;
+    height: 42px;
+    width: auto;
+}
+
+.main-nav ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    column-gap: 22px;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    color: rgba(247, 242, 233, 0.85);
+}
+
+.main-nav a:hover { color: var(--gold-light); }
+
+/* ---- MENU MOBILE (checkbox hack, nessuno script) --------------------------------
+   L'interruttore è visibile solo sotto i 760px (regole nella media query in
+   fondo al file): qui sono definiti solo il suo aspetto e il fatto che, per
+   restare raggiungibile da tastiera, la casella è "nascosta" con questa
+   tecnica (posizione fuori schermo) invece che con un semplice
+   "display:none", che la renderebbe anche non selezionabile col tasto Tab. */
+
+.nav-toggle-input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.nav-toggle-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.nav-toggle-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--cream);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#nav-toggle:focus-visible ~ .nav-toggle-btn {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+/* Animazione "hamburger" -> "X" quando il menu è aperto */
+#nav-toggle:checked ~ .nav-toggle-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#nav-toggle:checked ~ .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+#nav-toggle:checked ~ .nav-toggle-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---- HERO ------------------------------------------------------------------ */
+
+.hero {
+    position: relative;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--cream);
+    padding: 160px 0 120px;
+    background-size: cover;
+    background-position: center 42%;
+    background-repeat: no-repeat;
+}
+
+/* Piccolo invito a scorrere, in fondo all'hero: un dettaglio discreto,
+   ripreso nello spirito (non nella grafica) del sito ufficiale, che usa
+   un analogo richiamo testuale ("Scorri e scopri") su ogni sua pagina. */
+.scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-btn);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(247, 242, 233, 0.75);
+    animation: scrollCueBounce 2.4s ease-in-out infinite;
+}
+
+.scroll-cue::after {
+    content: "";
+    width: 1px;
+    height: 26px;
+    background-color: rgba(212, 180, 114, 0.8);
+}
+
+@keyframes scrollCueBounce {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+    50% { transform: translate(-50%, 8px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-cue { animation: none; }
+}
+
+@media (max-width: 760px) {
+    .scroll-cue { display: none; }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(36, 36, 36, 0.45) 0%, rgba(36, 36, 36, 0.8) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+}
+
+.eyebrow {
+    display: block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.9rem, 5vw, 3.4rem);
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.1;
+    color: var(--gold-dark);
+    margin-bottom: 6px;
+}
+
+.eyebrow-light {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    line-height: normal;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+}
+
+.hero h1 {
+    color: var(--cream);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 400;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(247, 242, 233, 0.88);
+    max-width: 52ch;
+    line-height: 1.7;
+}
+
+/* ---- BUTTONS ---------------------------------------------------------------- */
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    font-family: var(--font-btn);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 16px 32px;
+    border-radius: 2px;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-primary {
+    background-color: var(--gold);
+    color: var(--ink);
+}
+
+.btn-primary:hover {
+    background-color: var(--gold-light);
+    transform: translateY(-1px);
+}
+
+.btn-download {
+    background-color: var(--gold);
+    color: var(--ink);
+    font-size: 0.95rem;
+}
+
+.btn-download:hover { background-color: var(--gold-light); }
+
+/* ---- SECTIONS GENERIC -------------------------------------------------------- */
+
+.section { padding: 88px 0; }
+.section-alt { background-color: var(--stone); }
+
+.section-intro { max-width: 62ch; }
+
+/* ---- CHI SIAMO: due colonne --------------------------------------------------- */
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.stat-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat-card {
+    border-top: 1px solid var(--gold);
+    padding: 18px 0 0;
+}
+
+.stat-card strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+
+.stat-card span {
+    font-size: 0.88rem;
+    color: #5A5346;
+}
+
+/* ---- FOTOGRAFIE (coppia e piena larghezza) -------------------------------------- */
+
+.photo-pair {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.photo-pair img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-pair figcaption,
+.photo-full figcaption,
+.photo-wide figcaption {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: #6B6152;
+}
+
+.photo-full {
+    margin-top: 56px;
+    max-width: 480px;
+}
+
+.photo-full img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+}
+
+/* Fotografia a piena larghezza (sezione "Le persone"): a differenza di
+   .photo-full, pensata per un'immagine verticale di formato contenuto,
+   questa ospita una fotografia panoramica orizzontale che merita più
+   spazio */
+.photo-wide { margin-top: 48px; }
+
+.photo-wide img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 760px) {
+    .photo-pair {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-wide img { height: 260px; }
+}
+
+/* ---- PERCORSO STORICO COMPATTO (tappe chiave) ----------------------------------- */
+
+.timeline-compact {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(36, 36, 36, 0.14);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+}
+
+.timeline-item {
+    border-top: 2px solid var(--gold);
+    padding-top: 14px;
+}
+
+.timeline-year {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--gold-dark);
+    margin-bottom: 6px;
+}
+
+.timeline-item p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #5A5346;
+}
+
+@media (max-width: 900px) {
+    .timeline-compact { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+    .timeline-compact { grid-template-columns: 1fr; }
+}
+
+/* ---- LE CINQUE TENUTE (carosello editoriale) ------------------------------------
+   La precedente versione disponeva le cinque tenute in una griglia
+   "auto-fit": su schermi di larghezza intermedia questo lasciava
+   un'ultima riga incompleta (ad es. 3+2), con proporzioni sbilanciate.
+   Il carosello a larghezza di card fissa risolve il problema ed è reso
+   scorrevole allo stesso modo del carosello dei dieci ingredienti più
+   sotto nella pagina: scorrimento nativo per dito/trackpad (overflow-x
+   + scroll-snap, in .carousel-track) e un unico script di trascinamento
+   con il mouse, condiviso da entrambi i caroselli. */
+
+.estate-card {
+    flex: 0 0 auto;
+    width: min(340px, 78vw);
+    scroll-snap-align: start;
+    background-color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 18px rgba(36, 36, 36, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.estate-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(36, 36, 36, 0.12);
+}
+
+.estate-photo-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 260px;
+}
+
+.estate-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Punto di inquadratura personalizzato per fotografia: nelle cinque foto
+   delle tenute il soggetto principale (il faro, le rovine, il casale,
+   l'orizzonte) si trova a un'altezza diversa dell'immagine originale.
+   Un solo "object-position: center" per tutte avrebbe tagliato in modo
+   casuale il soggetto in alcune di esse — da cui queste cinque regole,
+   una per fotografia, al posto di un valore unico. */
+.pos-regaleali { object-position: center 64%; }
+.pos-tascante  { object-position: center 70%; }
+.pos-capofaro  { object-position: center 30%; }
+.pos-whitaker  { object-position: center 52%; }
+.pos-sallier   { object-position: center 58%; }
+
+.estate-photo-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 40px 20px 16px;
+    background: linear-gradient(to top, rgba(36, 36, 36, 0.88) 0%, rgba(36, 36, 36, 0) 100%);
+}
+
+.estate-tag {
+    display: block;
+    font-family: var(--font-btn);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold-light);
+    margin-bottom: 2px;
+}
+
+.estate-photo-overlay h3 {
+    color: var(--cream);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.estate-card-body {
+    padding: 18px 20px 22px;
+}
+
+.estate-meta {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--gold-dark);
+    margin-bottom: 10px !important;
+}
+
+.estate-card-body p:last-child {
+    font-size: 0.9rem;
+    color: #5A5346;
+    margin-bottom: 0;
+}
+
+/* ---- PULL QUOTE (citazione Alberto Tasca) -------------------------------------- */
+
+.pull-quote {
+    margin: 64px 0 0;
+    padding: 40px 0 0;
+    border-top: 1px solid rgba(36, 36, 36, 0.14);
+    max-width: 66ch;
+}
+
+.pull-quote p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 12px;
+}
+
+.pull-quote cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+}
+
+/* ---- ACQUA: MINI GRAFICO A BARRE, SOLO HTML/CSS ---------------------------------
+   Tre barre in altezza proporzionale al consumo idrico equivalente
+   registrato da Tasca d'Almerita nel 2020, 2022 e 2024 (fonte: Report di
+   Sostenibilità 2025, indicatore VIVA "Acqua"/Water Footprint). Nessuno
+   script: le altezze sono valori percentuali fissati in linea, calcolati
+   sul valore massimo della serie. */
+
+.water-chart {
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(36, 36, 36, 0.14);
+}
+
+.water-chart h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.water-chart-intro { max-width: 62ch; }
+
+.water-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+    height: 170px;
+    margin: 32px 0 14px;
+    padding: 0 4px;
+}
+
+.water-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    width: 92px;
+}
+
+.water-bar-value {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    white-space: nowrap;
+}
+
+.water-bar-fill {
+    width: 100%;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+    border-radius: 2px 2px 0 0;
+}
+
+.water-bar-year {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    color: #5A5346;
+}
+
+.water-note {
+    max-width: 62ch;
+    font-size: 0.86rem;
+    font-style: italic;
+    color: #6B6152;
+    margin-bottom: 0;
+}
+
+@media (max-width: 500px) {
+    .water-bars { gap: 18px; }
+    .water-bar { width: 68px; }
+}
+
+/* ---- CAROSELLO (i dieci ingredienti) ------------------------------------------ */
+
+.carousel {
+    position: relative;
+    margin-top: 48px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 4px 4px 28px;
+    /* nasconde la scrollbar del browser: l'indicazione di scorrimento è
+       affidata alle frecce e al bordo sfumato, più coerenti con lo stile
+       sobrio della pagina */
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+
+.carousel-track::-webkit-scrollbar { height: 5px; }
+.carousel-track::-webkit-scrollbar-thumb { background-color: var(--gold); border-radius: 4px; }
+.carousel-track::-webkit-scrollbar-track { background-color: rgba(36, 36, 36, 0.08); }
+
+.ingredient-card {
+    flex: 0 0 auto;
+    width: 260px;
+    scroll-snap-align: start;
+    background-color: var(--paper, #fff);
+    border-top: 3px solid var(--gold);
+    padding: 24px 22px;
+    box-shadow: 0 2px 14px rgba(36, 36, 36, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ingredient-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(36, 36, 36, 0.1);
+}
+
+.ingredient-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--gold-dark);
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+.ingredient-card h3 {
+    font-size: 1.08rem;
+    margin-bottom: 8px;
+}
+
+.ingredient-card p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: #5A5346;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(36, 36, 36, 0.16);
+    background-color: var(--cream);
+    color: var(--ink);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background-color 0.15s ease;
+}
+
+.carousel-arrow:hover { background-color: var(--gold); }
+
+.carousel-prev { left: -20px; }
+.carousel-next { right: -20px; }
+
+/* ---- NUMERI CHIAVE ------------------------------------------------------------- */
+
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+    text-align: left;
+}
+
+.number-block {
+    border-top: 1px solid var(--gold);
+    padding-top: 16px;
+}
+
+.number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 500;
+    color: var(--gold-dark);
+}
+
+.number-block p { margin-top: 6px; font-size: 0.92rem; color: #5A5346; }
+
+/* ---- DOWNLOAD SECTION ----------------------------------------------------------- */
+
+.download-section {
+    background-color: var(--ink);
+    color: var(--cream);
+    text-align: center;
+}
+
+.download-inner { max-width: 620px; margin: 0 auto; }
+.download-section h2 { color: var(--cream); }
+.download-section p { color: rgba(247, 242, 233, 0.82); }
+.file-meta { margin-top: 18px; font-size: 0.8rem; letter-spacing: 0.03em; color: rgba(247, 242, 233, 0.55); }
+
+/* ---- FOOTER ---------------------------------------------------------------------- */
+
+.site-footer {
+    padding: 40px 0;
+    background-color: var(--stone);
+    font-size: 0.82rem;
+    color: #6B6152;
+}
+.site-footer p { margin: 0 0 4px; }
+
+/* ---- RESPONSIVE: SCHERMI STRETTI --------------------------------------------------- */
+
+@media (max-width: 760px) {
+    /* Sotto i 760px il menu in linea (pensato per una riga larga) è quello
+       che affastellava le voci più lunghe una sull'altra. Al suo posto, un
+       pannello a tendina: il bottone "hamburger" resta accanto al logo
+       (l'intestazione mantiene la stessa riga, non si impila più in
+       colonna), il menu si apre sotto di esso in un elenco verticale a
+       piena larghezza, con una voce per riga. */
+    .nav-toggle-btn { display: flex; }
+
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--ink);
+        border-top: 1px solid rgba(212, 180, 114, 0.18);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    #nav-toggle:checked ~ .main-nav { display: block; }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .main-nav li { border-top: 1px solid rgba(212, 180, 114, 0.12); }
+    .main-nav li:first-child { border-top: none; }
+
+    .main-nav a {
+        display: block;
+        padding: 16px 28px;
+    }
+
+    .two-columns { grid-template-columns: 1fr; }
+
+    .hero { padding: 110px 0 80px; min-height: 460px; }
+
+    .ingredient-card { width: 78vw; }
+
+    .carousel-arrow { display: none; }
+
+    .section { padding: 64px 0; }
+}
